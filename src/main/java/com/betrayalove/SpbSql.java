@@ -8,14 +8,6 @@ public class SpbSql {
 
     private static final String CON_STR = "jdbc:sqlite:identifier.sqlite";
 
-//    private static SpbSql instance = null;
-//
-//    public static synchronized SpbSql getInstance() throws SQLException {
-//        if (instance == null)
-//            instance = new SpbSql();
-//        return instance;
-//    }
-
     private final Connection connection;
 
     public SpbSql() throws SQLException {
@@ -25,7 +17,7 @@ public class SpbSql {
 
     public void addProduct(SpbBase spbBase) {
         try (PreparedStatement statement = this.connection.prepareStatement(
-                "INSERT INTO table_name(`number`,`address`, `snapshot`, `number_floor`, `appellation`, `prefix_code`, `year_construction`) " +
+                "INSERT INTO table_name(number,address, snapshot, number_floor, appellation, prefix_code, year_construction) " +
                         "VALUES(?, ?, ?, ?, ?, ?, ?)")) {
             statement.setObject(1, spbBase.getNumber());
             statement.setObject(2, spbBase.getAddress());
@@ -64,7 +56,6 @@ public class SpbSql {
                 builder.append(resultSet.getString(1)).append('\n');
             }
             return builder.toString();
-//        return null;
 
         } catch (SQLException e) {
             e.printStackTrace();

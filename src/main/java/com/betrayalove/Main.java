@@ -16,7 +16,6 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) throws IOException, SQLException {
         List<SpbBase> list = SpbBaseParser.spbParser();
-//        SpbSql sql = SpbSql.getInstance();
         SpbSql sql = new SpbSql();
 
         //        for (SpbBase value : list) //ЗАПОЛНЕНИЕ ТАБЛИЦЫ
